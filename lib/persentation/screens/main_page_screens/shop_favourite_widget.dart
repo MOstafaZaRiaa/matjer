@@ -24,12 +24,9 @@ class ShopFavouriteWidget extends StatelessWidget {
           var cubit = ShopCubit.get(context);
           final deviceWidth = MediaQuery.of(context).size.width;
           return Scaffold(
-            body: Conditional.single(
-              context: context,
-              conditionBuilder: (context) =>
+            body:
                   cubit.favoritesModel!.data!.total != 0 ||
-                  cubit.favoritesModel == null,
-              widgetBuilder: (context) => SingleChildScrollView(
+                  cubit.favoritesModel == null ? SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -56,15 +53,15 @@ class ShopFavouriteWidget extends StatelessWidget {
                         itemCount: cubit.favoritesModel!.data!.data!.length),
                   ]),
                 ),
-              ),
-              fallbackBuilder: (context) => Center(
+              )
+              : Center(
                 child: SvgPicture.asset(
                   'assets/images/wishlist.svg',
                   width: deviceWidth * 0.7,
                 ),
               ),
-            ),
-          );
+            );
+
         });
   }
 
