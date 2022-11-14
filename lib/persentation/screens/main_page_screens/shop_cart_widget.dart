@@ -6,7 +6,7 @@ import 'package:matjer/business_logic/shop_cubit/shop_cubit.dart';
 import 'package:matjer/business_logic/shop_cubit/shop_states.dart';
 import 'package:matjer/constance/colors.dart';
 
-import '../../../data/models/cart_model.dart';
+import '../../../models/cart_model.dart';
 import '../../widgets/default_button.dart';
 
 class CartWidget extends StatelessWidget {
@@ -65,39 +65,6 @@ class CartWidget extends StatelessWidget {
             width: deviceWidth * 0.7,
         ),
          ),
-      );
-      return Scaffold(
-        body: cubit.cartModel?.data == null
-            ? const Text("")
-            : SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Column(children: [
-                    ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, i) {
-                        return Container(
-                            // padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            width: double.infinity,
-                            child: BuildCartItem(
-                                model: cubit
-                                    .cartModel!.data!.cartItems![i].product!,
-                                context: context));
-                      },
-                      separatorBuilder: (context, i) {
-                        return Divider(
-                            color: Colors.black.withOpacity(0.1), thickness: 2);
-                      },
-                      itemCount:cubit.cartModel!.data!.cartItems!.length,
-                    ),
-                  ]),
-                ),
-              ),
       );
     });
   }

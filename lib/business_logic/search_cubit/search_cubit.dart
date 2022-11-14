@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matjer/business_logic/search_cubit/search_states.dart';
 
 import '../../constance/strings.dart';
-import '../../data/models/search_model.dart';
 import '../../helper/dio_helper.dart';
+import '../../models/search_model.dart';
 
 class SearchCubit extends Cubit<SearchStates>{
   SearchCubit():super(SearchInitialState());

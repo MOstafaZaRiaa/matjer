@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matjer/business_logic/search_cubit/search_cubit.dart';
 import 'package:matjer/business_logic/search_cubit/search_states.dart';
 import 'package:matjer/constance/components.dart';
-import 'package:matjer/data/models/search_model.dart';
 
 import '../../business_logic/shop_cubit/shop_cubit.dart';
 import '../../constance/colors.dart';
+import '../../models/search_model.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);

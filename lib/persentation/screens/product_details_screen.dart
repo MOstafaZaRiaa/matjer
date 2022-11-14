@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../business_logic/shop_cubit/shop_cubit.dart';
 import '../../business_logic/shop_cubit/shop_states.dart';
-import '../../data/models/home_model.dart';
+import '../../models/home_model.dart';
 
 class DetailsScreen extends StatelessWidget {
   final ProductModel model;

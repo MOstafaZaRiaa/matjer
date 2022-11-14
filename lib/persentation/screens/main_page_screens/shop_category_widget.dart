@@ -5,7 +5,7 @@ import 'package:matjer/business_logic/shop_cubit/shop_states.dart';
 import 'package:matjer/constance/colors.dart';
 
 import '../../../business_logic/shop_cubit/shop_cubit.dart';
-import '../../../data/models/categories_model.dart';
+import '../../../models/categories_model.dart';
 
 class ShopCategoryWidget extends StatelessWidget {
   const ShopCategoryWidget({Key? key}) : super(key: key);

@@ -8,8 +8,8 @@ import 'package:matjer/constance/colors.dart';
 import '../../../business_logic/shop_cubit/shop_cubit.dart';
 import '../../../business_logic/shop_cubit/shop_states.dart';
 import '../../../constance/components.dart';
-import '../../../data/models/categories_model.dart';
-import '../../../data/models/home_model.dart';
+import '../../../models/categories_model.dart';
+import '../../../models/home_model.dart';
 import '../product_details_screen.dart';
 
 class ShopMainWidget extends StatelessWidget {

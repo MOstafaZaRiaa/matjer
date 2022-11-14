@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matjer/business_logic/login_cubit/states.dart';
-import 'package:matjer/data/models/user_model.dart';
 
 import '../../constance/strings.dart';
 import '../../helper/dio_helper.dart';
 import '../../helper/shared_prefrence_helper.dart';
+import '../../models/user_model.dart';
 
 class LoginCubit extends Cubit<LoginStates>{
   LoginCubit():super(LoginInitialState());

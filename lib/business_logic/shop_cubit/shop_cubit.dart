@@ -2,18 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matjer/business_logic/shop_cubit/shop_states.dart';
 import 'package:matjer/constance/strings.dart';
-import 'package:matjer/data/models/cart_model.dart';
 import 'package:matjer/helper/dio_helper.dart';
 import 'package:matjer/helper/shared_prefrence_helper.dart';
 import 'package:matjer/persentation/screens/main_page_screens/shop_favourite_widget.dart';
 import 'package:matjer/persentation/screens/main_page_screens/shop_main_widget.dart';
 import 'package:matjer/persentation/screens/main_page_screens/shop_profile_widget.dart';
 
-import '../../data/models/categories_model.dart';
-import '../../data/models/change_cart_model.dart';
-import '../../data/models/favourite_model.dart';
-import '../../data/models/home_model.dart';
-import '../../data/models/user_model.dart';
+import '../../models/cart_model.dart';
+import '../../models/categories_model.dart';
+import '../../models/change_cart_model.dart';
+import '../../models/favourite_model.dart';
+import '../../models/home_model.dart';
+import '../../models/user_model.dart';
 import '../../persentation/screens/main_page_screens/shop_cart_widget.dart';
 import '../../persentation/screens/main_page_screens/shop_category_widget.dart';
 
@@ -177,7 +177,7 @@ class ShopCubit extends Cubit<ShopStates> {
       },
       token: token,
     ).then((value){
-      changeCartModel = ChangeCartModel.fromJson(value!.data);
+      changeCartModel = ChangeCartModel.fromJson(value.data);
       if( changeCartModel!.status == true )
       {
         getCart();

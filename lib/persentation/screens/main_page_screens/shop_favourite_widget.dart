@@ -7,7 +7,7 @@ import 'package:matjer/business_logic/shop_cubit/shop_states.dart';
 
 import '../../../business_logic/shop_cubit/shop_cubit.dart';
 import '../../../constance/colors.dart';
-import '../../../data/models/favourite_model.dart';
+import '../../../models/favourite_model.dart';
 
 class ShopFavouriteWidget extends StatelessWidget {
   const ShopFavouriteWidget({Key? key}) : super(key: key);

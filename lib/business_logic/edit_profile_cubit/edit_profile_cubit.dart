@@ -1,14 +1,12 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matjer/business_logic/edit_profile_cubit/edit_profile_states.dart';
-import 'package:matjer/business_logic/signup_cubit/signup_states.dart';
-import 'package:matjer/data/models/user_model.dart';
+
 
 import '../../constance/strings.dart';
 import '../../helper/dio_helper.dart';
 import '../../helper/shared_prefrence_helper.dart';
+import '../../models/user_model.dart';
 
 class EditProfileCubit extends Cubit<EditProfileStates>{
   EditProfileCubit():super(EditProfileInitialState());
