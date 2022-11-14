@@ -1,16 +1,18 @@
-# matjer
+# Matjer - REST API & Bloc
 
-A new Flutter project.
+This is an ecommerce app which contain Many features like :
+1. Sign in , Sign up , Verify Email , log out.
+2. Fetch Products Data
+3. Search for any product
+4. Add or remove product to  in_favorite & in_cart section
+5. Update User data and so on.
 
-## Getting Started
+Developed using Dart & Flutter & Rest Api & Dio & Bloc & SharedPref.
 
-This project is a starting point for a Flutter application.
+##Photos from The App
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Preview](assets/from_app_screen_shots/1.png)
+![Preview](assets/from_app_screen_shots/5.png)
+![Preview](assets/from_app_screen_shots/2.png)
+![Preview](assets/from_app_screen_shots/3.png)
+![Preview](assets/from_app_screen_shots/4.png)
