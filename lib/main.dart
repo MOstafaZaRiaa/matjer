@@ -64,8 +64,8 @@ class Matjer extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => ShopCubit()
             ..getHomeData()
-            ..getCategories()
             ..getFavoriteData()
+            ..getCategories()
             ..getUserData()
             ..getTheme()
             ..getCart(),

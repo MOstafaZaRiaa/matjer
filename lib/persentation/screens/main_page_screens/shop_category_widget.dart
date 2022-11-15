@@ -16,37 +16,43 @@ class ShopCategoryWidget extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = ShopCubit.get(context);
-          return Scaffold(
-            body: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(children: [
-                  ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, i) {
-                        return Container(
-                            padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: i.isEven
-                                  ? MyColors.primarySwatch.withOpacity(0.5)
-                                  : Colors.grey.withOpacity(0.2),
-                            ),
-                            width: double.infinity,
-                            child: BuildCategoryItem(
-                                model: cubit.categoriesModel!.data!.data[i],
-                                context: context));
-                      },
-                      separatorBuilder: (context, i) {
-                        return const SizedBox(height: 10);
-                      },
-                      itemCount: 5),
-                ]),
-              ),
-            ),
-          );
+          return cubit.categoriesModel == null
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Scaffold(
+                  body: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(children: [
+                        ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, i) {
+                              return Container(
+                                  padding: const EdgeInsets.all(15),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    color: i.isEven
+                                        ? MyColors.primarySwatch
+                                            .withOpacity(0.5)
+                                        : Colors.grey.withOpacity(0.2),
+                                  ),
+                                  width: double.infinity,
+                                  child: BuildCategoryItem(
+                                      model:
+                                          cubit.categoriesModel!.data!.data[i],
+                                      context: context));
+                            },
+                            separatorBuilder: (context, i) {
+                              return const SizedBox(height: 10);
+                            },
+                            itemCount: 5),
+                      ]),
+                    ),
+                  ),
+                );
         });
   }
 

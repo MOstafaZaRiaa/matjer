@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:matjer/business_logic/shop_cubit/shop_states.dart';
 
@@ -14,55 +13,57 @@ class ShopFavouriteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ShopCubit, ShopStates>(
-        listener: (context, state) {
-          if(state is ShopLoadingGetFavoritesState){
-             const Center(child: CircularProgressIndicator(),);
-          }
-        },
-        builder: (context, state) {
-          var cubit = ShopCubit.get(context);
-          final deviceWidth = MediaQuery.of(context).size.width;
-          return Scaffold(
-            body:
-                  cubit.favoritesModel!.data!.total != 0 ||
-                  cubit.favoritesModel == null ? SingleChildScrollView(
+    return BlocConsumer<ShopCubit, ShopStates>(listener: (context, state) {
+      if (state is ShopLoadingGetFavoritesState) {
+        const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    }, builder: (context, state) {
+      var cubit = ShopCubit.get(context);
+      final deviceWidth = MediaQuery.of(context).size.width;
+      return Scaffold(
+        body: cubit.favoritesModel!.status == true ||
+                cubit.favoritesModel == null
+            ? SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(children: [
-                    ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, i) {
-                          return Container(
-                              padding: const EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: Colors.grey.withOpacity(0.2),
-                              ),
-                              width: double.infinity,
-                              child: buildFavouriteItem(
-                                  favoriteProduct: cubit
-                                      .favoritesModel!.data!.data![i].product!,
-                                  context: context));
-                        },
-                        separatorBuilder: (context, i) {
-                          return const SizedBox(height: 10);
-                        },
-                        itemCount: cubit.favoritesModel!.data!.data!.length),
-                  ]),
-                ),
+                child: cubit.favoritesModel!.data!.total == 0
+                    ? SvgPicture.asset(
+                        'assets/images/wishlist.svg',
+                        width: deviceWidth * 0.7,
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(children: [
+                          ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, i) {
+                                return Container(
+                                    padding: const EdgeInsets.all(15),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      color: Colors.grey.withOpacity(0.2),
+                                    ),
+                                    width: double.infinity,
+                                    child: buildFavouriteItem(
+                                        favoriteProduct: cubit.favoritesModel!
+                                            .data!.data![i].product!,
+                                        context: context));
+                              },
+                              separatorBuilder: (context, i) {
+                                return const SizedBox(height: 10);
+                              },
+                              itemCount:
+                                  cubit.favoritesModel!.data!.data!.length),
+                        ]),
+                      ),
               )
-              : Center(
-                child: SvgPicture.asset(
-                  'assets/images/wishlist.svg',
-                  width: deviceWidth * 0.7,
-                ),
+            : Center(
+                child: CircularProgressIndicator(),
               ),
-            );
-
-        });
+      );
+    });
   }
 
   Widget buildFavouriteItem(
@@ -126,12 +127,9 @@ class ShopFavouriteWidget extends StatelessWidget {
                 Text(
                   favoriteProduct.name.toString().toUpperCase(),
                   maxLines: 2,
-                  style:  TextStyle(
+                  style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyText1!
-                          .color!,
+                      color: Theme.of(context).textTheme.bodyText1!.color!,
                       fontSize: 16,
                       overflow: TextOverflow.ellipsis),
                 ),
