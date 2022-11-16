@@ -23,7 +23,7 @@ class ShopFavouriteWidget extends StatelessWidget {
       var cubit = ShopCubit.get(context);
       final deviceWidth = MediaQuery.of(context).size.width;
       return Scaffold(
-        body: cubit.favoritesModel!.status == true ||
+        body: cubit.favoritesModel!.status == true &&
                 cubit.favoritesModel == null
             ? SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
